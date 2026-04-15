@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Mohamed Yasin K — Cybersecurity</title>
+
+<meta property="og:title" content="Mohamed Yasin K — SOC Analyst & Cybersecurity Professional" />
+<meta property="og:description" content="Recent Cybersecurity graduate with hands-on experience in security monitoring, threat analysis, incident response workflows, and offensive security fundamentals." />
+<meta property="og:type" content="website" />
+<meta property="og:image" content="https://your-hosted-domain.com/og-image.jpg" />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="https://your-hosted-domain.com/og-image.jpg" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300&family=JetBrains+Mono:wght@300;400;500;600;700&display=swap" rel="stylesheet"/>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/vanilla-tilt/1.8.1/vanilla-tilt.min.js"></script>
+
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#050505;
+  --s1:rgba(255,255,255,0.026);
+  --s2:rgba(255,255,255,0.048);
+  --b1:rgba(255,255,255,0.052);
+  --b2:rgba(255,255,255,0.1);
+  --b3:rgba(255,255,255,0.16);
+  --cyan:#22d3ee;
+  --em:#34d399;
+  --indigo:#818cf8;
+  --red:#f87171;
+  --amber:#fbbf24;
+  --t1:#eef2f7;
+  --t2:#6b7280;
+  --t3:#374151;
+  --t4:#1f2937;
+}
+
+html{scroll-behavior:smooth}
+body{
+  background:var(--bg);
+  color:var(--t1);
+  font-family:'Inter',sans-serif;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+  -moz-osx-font-smoothing:grayscale;
+}
+.mono{font-family:'JetBrains Mono',monospace}
+
+/* ─── Noise grain ─── */
+body::before{
+  content:'';
+  position:fixed;inset:0;
+  background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  opacity:0.024;pointer-events:none;z-index:1;
+}
+
+/* ─── Ambient glows ─── */
+.orb{
+  position:fixed;border-radius:50%;
+  filter:blur(130px);pointer-events:none;z-index:0;
+}
+.orb-a{width:720px;height:720px;background:#22d3ee;top:-260px;left:-200px;opacity:0.11;animation:da 20s ease-in-out infinite alternate}
+.orb-b{width:580px;height:580px;background:#34d399;bottom:-180px;right:-180px;opacity:0.1;animation:db 25s ease-in-out infinite alternate}
+.orb-c{width:340px;height:340px;background:#818cf8;top:42%;left:52%;transform:translate(-50%,-50%);opacity:0.06;animation:dc 17s ease-in-out infinite alternate}
+@keyframes da{to{transform:translate(70px,50px)}}
+@keyframes db{to{transform:translate(-55px,-65px)}}
+@keyframes dc{to{transform:translate(-50%,-50%) scale(1.25)}}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar{width:3px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:rgba(34,211,238,0.18);border-radius:3px}
+
+/* ─── Glass surface ─── */
+.glass{
+  background:var(--s1);
+  border:1px solid var(--b1);
+  backdrop-filter:blur(22px);
+  -webkit-backdrop-filter:blur(22px);
+  transition:border-color .3s ease,background .3s ease;
+}
+.glass:hover{background:var(--s2);border-color:var(--b2)}
+
+/* ─── Gradient text ─── */
+.gc{background:linear-gradient(135deg,#22d3ee 0%,#34d399 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text}
+
+/* ─── Glow divider ─── */
+.gl{height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,0.25),transparent);margin:0 0 72px}
+
+/* ─── Section label ─── */
+.slabel{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;letter-spacing:.18em;text-transform:uppercase;color:var(--t3)
+}
+
+/* ─── Badge ─── */
+.badge{
+  display:inline-flex;align-items:center;gap:5px;
+  padding:3px 11px;border-radius:999px;
+  font-size:10.5px;font-weight:500;letter-spacing:.04em;border:1px solid;
+}
+.bc{border-color:rgba(34,211,238,.22);background:rgba(34,211,238,.07);color:var(--cyan)}
+.be{border-color:rgba(52,211,153,.22);background:rgba(52,211,153,.07);color:var(--em)}
+.bi{border-color:rgba(129,140,248,.22);background:rgba(129,140,248,.07);color:var(--indigo)}
+.br{border-color:rgba(248,113,113,.22);background:rgba(248,113,113,.07);color:var(--red)}
+.ba{border-color:rgba(251,191,36,.22);background:rgba(251,191,36,.07);color:var(--amber)}
+
+/* ─── Buttons ─── */
+.btn{
+  display:inline-flex;align-items:center;gap:8px;
+  padding:11px 22px;border-radius:10px;
+  font-size:13px;font-weight:600;letter-spacing:.01em;
+  text-decoration:none;border:1px solid transparent;
+  transition:all .25s ease;cursor:pointer;
+}
+.btn-p{
+  background:linear-gradient(135deg,rgba(34,211,238,.13),rgba(52,211,153,.1));
+  border-color:rgba(34,211,238,.28);color:var(--cyan);
+}
+.btn-p:hover{
+  background:linear-gradient(135deg,rgba(34,211,238,.22),rgba(52,211,153,.17));
+  border-color:rgba(34,211,238,.5);
+  transform:translateY(-2px);
+  box-shadow:0 10px 36px rgba(34,211,238,.13);
+}
+.btn-g{background:transparent;border-color:var(--b1);color:var(--t2)}
+.btn-g:hover{border-color:var(--b2);color:var(--t1)}
+
+/* ─── Layout ─── */
+.wrap{
+  position:relative;z-index:2;
+  max-width:1120px;margin:0 auto;padding:0 28px 100px;
+}
+section{margin-bottom:88px}
+
+/* ─── Scroll Reveal ─── */
+.reveal{
+  opacity:0;transform:translateY(28px);
+  transition:opacity .75s cubic-bezier(.16,1,.3,1),transform .75s cubic-bezier(.16,1,.3,1);
+}
+.reveal.visible{opacity:1;transform:none}
+
+/* ─── NAV ─── */
+nav{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  border-bottom:1px solid var(--b1);
+  background:rgba(5,5,5,.72);
+  backdrop-filter:blur(28px);-webkit-backdrop-filter:blur(28px);
+}
+.nav-inner{
+  max-width:1120px;margin:0 auto;padding:14px 28px;
+  display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:14px;
+}
+.nav-logo{font-family:'JetBrains Mono',monospace;font-size:13px;color:var(--t2);letter-spacing:.06em}
+.nav-logo .c{color:var(--cyan)}.nav-logo .e{color:var(--em)}.nav-logo .d{color:var(--t3)}
+.nav-links{display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.nav-link{
+  font-size:12.5px;color:var(--t2);text-decoration:none;
+  padding:6px 13px;border-radius:7px;font-weight:500;
+  transition:color .2s,background .2s;
+}
+.nav-link:hover{color:var(--t1);background:var(--s1)}
+
+/* ─── HERO ─── */
+#hero{padding-top:120px;padding-bottom:90px}
+.hero-grid{display:grid;grid-template-columns:1fr 480px;gap:56px;align-items:start}
+@media(max-width:900px){.hero-grid{grid-template-columns:1fr}}
+
+.status-row{display:flex;align-items:center;gap:10px;margin-bottom:22px}
+.pulse-dot{
+  width:7px;height:7px;border-radius:50%;
+  background:var(--em);box-shadow:0 0 8px var(--em);
+  animation:pulse 2.2s ease-in-out infinite;flex-shrink:0;
+}
+@keyframes pulse{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.55;transform:scale(.8)}}
+
+.hero-name{
+  font-size:clamp(2.6rem,5.5vw,4.8rem);
+  font-weight:900;line-height:1.03;letter-spacing:-.035em;margin-bottom:14px;
+}
+.hero-sub{
+  font-size:clamp(1rem,2vw,1.25rem);font-weight:400;
+  color:var(--t2);margin-bottom:26px;
+  display:flex;align-items:center;gap:10px;min-height:2em;
+}
+.sub-prefix{
+  font-family:'JetBrains Mono',monospace;
+  font-size:.82em;color:var(--t3);
+}
+#tw{color:var(--cyan);font-weight:600;font-family:'JetBrains Mono',monospace}
+.caret{
+  display:inline-block;width:2px;height:1em;
+  background:var(--cyan);vertical-align:text-bottom;margin-left:1px;
+  animation:blink 1s step-end infinite;
+}
+@keyframes blink{0%,100%{opacity:1}50%{opacity:0}}
+
+.hero-desc{
+  max-width:520px;font-size:15px;line-height:1.8;
+  color:var(--t2);margin-bottom:30px;
+}
+.hero-badges{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:34px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px}
+
+/* ─── Terminal ─── */
+.term-wrap{
+  border-radius:14px;overflow:hidden;
+  border:1px solid rgba(34,211,238,.1);
+  background:rgba(6,6,6,.88);
+  backdrop-filter:blur(20px);-webkit-backdrop-filter:blur(20px);
+  box-shadow:0 28px 80px rgba(0,0,0,.55),inset 0 0 0 1px rgba(34,211,238,.04);
+}
+.term-bar{
+  display:flex;align-items:center;gap:7px;
+  padding:11px 16px;
+  border-bottom:1px solid rgba(255,255,255,.05);
+  background:rgba(255,255,255,.02);
+}
+.td{width:11px;height:11px;border-radius:50%}
+.term-title{
+  font-family:'JetBrains Mono',monospace;font-size:11px;
+  color:var(--t3);margin:0 auto;
+}
+.term-body{
+  padding:18px 20px 6px;
+  min-height:190px;max-height:280px;overflow-y:auto;
+  font-family:'JetBrains Mono',monospace;font-size:12.5px;line-height:1.72;
+}
+.term-body::-webkit-scrollbar{width:2px}
+.term-body::-webkit-scrollbar-thumb{background:rgba(34,211,238,.18)}
+.tline{margin-bottom:1px}
+.tp{color:var(--cyan)}.tcmd{color:var(--t1)}
+.tout{
+  display:block;padding-left:4px;white-space:pre-wrap;
+  color:var(--t2);margin-bottom:3px;font-size:12px;
+}
+.tout.c{color:var(--cyan)}.tout.e{color:var(--em)}
+.tout.r{color:var(--red)}.tout.a{color:var(--amber)}
+.tout.d{color:var(--t3)}
+.term-input-row{
+  display:flex;align-items:center;gap:4px;
+  padding:8px 20px 4px;
+}
+#tinput{
+  background:transparent;border:none;outline:none;
+  color:var(--t1);font-family:'JetBrains Mono',monospace;
+  font-size:12.5px;flex:1;caret-color:var(--cyan);
+  min-width:0;
+}
+.term-hint{
+  font-size:10px;color:var(--t4);
+  padding:4px 20px 14px;
+  font-family:'JetBrains Mono',monospace;
+}
+
+/* ─── BENTO ─── */
+.bento{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
+@media(max-width:980px){.bento{grid-template-columns:repeat(2,1fr)}}
+@media(max-width:600px){.bento{grid-template-columns:1fr}}
+
+.bento-card{
+  border-radius:18px;padding:28px;
+  position:relative;overflow:hidden;
+  transform-style:preserve-3d;
+  will-change:transform;
+}
+.card-glow{
+  position:absolute;width:200px;height:200px;border-radius:50%;
+  filter:blur(70px);pointer-events:none;top:-50px;right:-50px;opacity:.15;
+}
+.counter-num{
+  font-family:'JetBrains Mono',monospace;
+  font-size:3.6rem;font-weight:800;line-height:1;
+}
+.prog-track{height:2px;border-radius:2px;background:rgba(255,255,255,.05);overflow:hidden;margin-top:14px}
+.prog-fill{
+  height:100%;border-radius:2px;
+  background:linear-gradient(90deg,var(--cyan),var(--em));
+  width:0;
+  transition:width 1.6s cubic-bezier(.16,1,.3,1);
+}
+.ibox{
+  width:38px;height:38px;border-radius:9px;
+  display:flex;align-items:center;justify-content:center;border:1px solid;
+  flex-shrink:0;
+}
+
+/* ─── SKILLS ─── */
+.skills-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+@media(max-width:680px){.skills-grid{grid-template-columns:1fr}}
+
+.skill-pill{
+  display:inline-flex;align-items:center;gap:7px;
+  padding:8px 13px;border-radius:8px;
+  font-size:12px;font-weight:500;
+  font-family:'JetBrains Mono',monospace;
+  background:rgba(255,255,255,.03);border:1px solid var(--b1);
+  color:var(--t2);transition:all .22s ease;
+}
+.skill-pill:hover{
+  border-color:var(--b2);color:var(--t1);
+  transform:translateX(4px);
+}
+.sdot{width:5px;height:5px;border-radius:50%;flex-shrink:0}
+
+/* ─── CTF PODIUM ─── */
+.podium-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:20px}
+@media(max-width:680px){.podium-grid{grid-template-columns:1fr}}
+
+.podium-card{
+  border-radius:14px;padding:20px;text-align:center;
+  position:relative;overflow:hidden;
+  transition:transform .25s ease,box-shadow .25s ease;
+}
+.podium-card:hover{transform:translateY(-4px)}
+.podium-rank{
+  font-family:'JetBrains Mono',monospace;
+  font-size:2.6rem;font-weight:800;line-height:1;margin-bottom:6px;
+}
+.podium-name{font-size:14px;font-weight:700;margin-bottom:4px}
+.podium-scope{font-size:11px;color:var(--t2);font-family:'JetBrains Mono',monospace}
+.podium-medal{
+  position:absolute;top:14px;right:14px;
+  font-size:20px;
+}
+
+.ctf-list{display:flex;flex-direction:column;gap:0}
+.ctf-row{
+  display:flex;align-items:center;gap:16px;
+  padding:14px 0;border-bottom:1px solid var(--b1);
+}
+.ctf-row:last-child{border-bottom:none}
+.ctf-idx{
+  font-family:'JetBrains Mono',monospace;font-size:10.5px;
+  color:var(--t3);width:24px;text-align:right;flex-shrink:0;
+}
+.ctf-name-col{flex:1;min-width:0}
+.ctf-name{font-weight:600;font-size:13.5px;margin-bottom:2px}
+.ctf-scope{font-size:11px;color:var(--t2);font-family:'JetBrains Mono',monospace}
+.ctf-place{
+  font-family:'JetBrains Mono',monospace;font-size:13px;
+  font-weight:800;flex-shrink:0;
+}
+
+/* ─── PROJECT ─── */
+.proj-wrap{border-radius:20px;overflow:hidden;position:relative}
+.proj-accent{height:2px;background:linear-gradient(90deg,var(--cyan),var(--em) 60%,transparent)}
+.proj-body{padding:34px}
+.proj-inner{display:grid;grid-template-columns:1fr 200px;gap:36px;align-items:start}
+@media(max-width:700px){.proj-inner{grid-template-columns:1fr}}
+
+.proj-modules{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin:22px 0 26px}
+.pmod{border-radius:10px;padding:14px;border:1px solid}
+.pmod-num{
+  font-family:'JetBrains Mono',monospace;font-size:9.5px;
+  letter-spacing:.1em;margin-bottom:5px;
+}
+.pmod-title{font-size:13px;font-weight:700;margin-bottom:3px}
+.pmod-desc{font-size:11.5px;color:var(--t2);line-height:1.55}
+
+/* Architecture flow */
+.arch{display:flex;flex-direction:column;gap:6px}
+.arch-node{
+  border-radius:7px;padding:9px 12px;
+  font-family:'JetBrains Mono',monospace;font-size:10px;
+  text-align:center;border:1px solid;
+}
+.arch-arr{text-align:center;color:var(--t3);font-size:12px;line-height:1}
+.arch-grid2{display:grid;grid-template-columns:1fr 1fr;gap:4px}
+.arch-mini{
+  border-radius:5px;padding:7px 4px;
+  font-family:'JetBrains Mono',monospace;font-size:9px;
+  text-align:center;border:1px solid rgba(52,211,153,.14);
+  background:rgba(52,211,153,.04);color:var(--em);line-height:1.35;
+}
+
+/* ─── EDUCATION ─── */
+.edu-card{
+  border-radius:16px;padding:28px;
+  display:flex;align-items:center;justify-content:space-between;
+  flex-wrap:wrap;gap:20px;
+}
+.edu-cgpa{
+  font-family:'JetBrains Mono',monospace;
+  font-size:2.8rem;font-weight:800;line-height:1;
+}
+
+/* ─── CONTACT ─── */
+#contact{text-align:center;padding-bottom:10px}
+.contact-links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:28px}
+.foot{
+  font-family:'JetBrains Mono',monospace;
+  font-size:10.5px;color:var(--t4);margin-top:24px;
+}
+</style>
+</head>
+<body>
+
+<div class="orb orb-a"></div>
+<div class="orb orb-b"></div>
+<div class="orb orb-c"></div>
+
+<nav>
+  <div class="nav-inner">
+    <span class="nav-logo"><span class="c">~/</span>yasin<span class="d">@</span><span class="e">sec</span></span>
+    <div class="nav-links">
+      <a class="nav-link" href="#skills">Arsenal</a>
+      <a class="nav-link" href="#project">Projects</a>
+      <a class="nav-link" href="#ctf">CTF</a>
+      <a class="nav-link" href="#writeups">Writeups</a>
+      <a href="mailto:mohamed.yasin.sec@gmail.com" class="btn btn-p" style="padding:8px 18px;font-size:12px">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+        Hire Me
+      </a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+
+<section id="hero">
+  <div class="hero-grid">
+
+    <div class="reveal">
+      <div class="status-row">
+        <div class="pulse-dot"></div>
+        <span class="mono" style="font-size:11.5px;color:var(--t2);letter-spacing:.06em">
+          OPEN TO OPPORTUNITIES · TIRUCHIRAPPALLI, INDIA
+        </span>
+      </div>
+
+      <h1 class="hero-name">
+        Mohamed<br/><span class="gc">Yasin K</span>
+      </h1>
+
+      <div class="hero-sub">
+        <span class="sub-prefix">$&gt;</span>
+        <span id="tw"></span><span class="caret"></span>
+      </div>
+
+      <p class="hero-desc">
+        Recent Cybersecurity graduate with hands-on experience in security monitoring, threat analysis, incident response workflows, and offensive security fundamentals. Skilled in translating attacker behavior into defensive detection strategies.
+      </p>
+
+      <div class="hero-badges">
+        <span class="badge bc">
+          <span style="width:5px;height:5px;border-radius:50%;background:var(--cyan);display:inline-block"></span>
+          TryHackMe Top 3%
+        </span>
+        <span class="badge be">CompTIA Security+ · In Progress</span>
+        <span class="badge bi">6+ National CTFs</span>
+        <span class="badge br">B.Sc IT · Graduate</span>
+        <span class="badge ba">Open to Relocation (PAN India)</span>
+      </div>
+
+      <div class="hero-actions">
+        <a href="mailto:mohamed.yasin.sec@gmail.com" class="btn btn-p">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+          Get In Touch
+        </a>
+        
+        <a href="./Mohamed_Yasin_K_Resume.pdf" target="_blank" rel="noopener noreferrer" class="btn btn-g" aria-label="Download Resume">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path><polyline points="7 10 12 15 17 10"></polyline><line x1="12" y1="15" x2="12" y2="3"></line></svg>
+          Resume
+        </a>
+        
+        <a href="https://github.com/md-yasin786" target="_blank" class="btn btn-g" aria-label="GitHub Profile">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+        </a>
+        <a href="https://www.linkedin.com/in/mohamedyasin-k" target="_blank" class="btn btn-g" aria-label="LinkedIn Profile">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        </a>
+      </div>
+    </div>
+
+    <div class="reveal" style="transition-delay:.18s">
+      <div class="term-wrap">
+        <div class="term-bar">
+          <div class="td" style="background:#ff5f57"></div>
+          <div class="td" style="background:#febc2e"></div>
+          <div class="td" style="background:#28c840"></div>
+          <span class="term-title">yasin@kali:~</span>
+        </div>
+        <div class="term-body" id="toutput"></div>
+        <div class="term-input-row">
+          <span class="tp mono">yasin@kali:~$&nbsp;</span>
+          <input id="tinput" type="text" spellcheck="false" autocomplete="off" placeholder="type 'help'"/>
+        </div>
+        <div class="term-hint">try: help · whoami · skills · ctf · contact · clear</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section id="stats">
+  <div class="reveal" style="margin-bottom:22px"><span class="slabel">// Performance Metrics</span></div>
+
+  <div class="bento">
+
+    <div class="glass bento-card reveal js-tilt" data-delay="0"
+         data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.06">
+      <div class="card-glow" style="background:#22d3ee"></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <div class="ibox" style="background:rgba(34,211,238,.08);border-color:rgba(34,211,238,.18)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+        </div>
+        <span class="mono" style="font-size:11px;color:var(--t2)">TryHackMe</span>
+      </div>
+      <div class="counter-num gc js-counter" data-target="3" data-suffix="%" data-prefix="Top ">Top 0%</div>
+      <div style="margin-top:6px;font-size:12px;color:var(--t3);margin-bottom:14px">Global Ranking · Elite Percentile</div>
+      <div class="prog-track"><div class="prog-fill js-prog" data-width="97"></div></div>
+      <div style="margin-top:12px;font-size:10.5px;color:var(--t4);font-family:'JetBrains Mono',monospace">100+ rooms completed · Jr Pentester · SOC L1</div>
+      <div style="display:flex;flex-direction:column;gap:5px;margin-top:10px">
+        <a href="https://tryhackme.com/p/K.MohamedYasin" target="_blank" style="font-size:11px;color:var(--cyan);text-decoration:none;font-family:'JetBrains Mono',monospace;transition:color 0.2s">View Profile →</a>
+      </div>
+    </div>
+
+    <div class="glass bento-card reveal js-tilt" data-delay="80"
+         data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.06">
+      <div class="card-glow" style="background:#a3e635"></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <div class="ibox" style="background:rgba(163,230,53,.08);border-color:rgba(163,230,53,.18)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#a3e635" stroke-width="2"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"></path></svg>
+        </div>
+        <span class="mono" style="font-size:11px;color:var(--t2)">HackTheBox</span>
+      </div>
+      <div class="counter-num js-counter" style="color:#a3e635" data-target="15" data-suffix="+">0+</div>
+      <div style="margin-top:6px;font-size:12px;color:var(--t3);margin-bottom:14px">Machines Pwned</div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <a href="https://app.hackthebox.com/public/users/1982029" target="_blank" style="font-size:11px;color:#a3e635;text-decoration:none;font-family:'JetBrains Mono',monospace;transition:color 0.2s">View Profile →</a>
+      </div>
+    </div>
+
+    <div class="glass bento-card reveal js-tilt" data-delay="160"
+         data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.06">
+      <div class="card-glow" style="background:#34d399"></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <div class="ibox" style="background:rgba(52,211,153,.08);border-color:rgba(52,211,153,.18)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#34d399" stroke-width="2"><path d="M6 9H4.5a2.5 2.5 0 010-5H6"/><path d="M18 9h1.5a2.5 2.5 0 000-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.47.98-.97 1.21C7.85 18.75 7 20.24 7 22"/><path d="M14 14.66V17c0 .55.47.98.97 1.21C16.15 18.75 17 20.24 17 22"/><path d="M18 2H6v7a6 6 0 0012 0V2z"/></svg>
+        </div>
+        <span class="mono" style="font-size:11px;color:var(--t2)">CTF Record</span>
+      </div>
+      <div class="counter-num js-counter"
+           style="background:linear-gradient(135deg,#34d399,#6ee7b7);-webkit-background-clip:text;-webkit-text-fill-color:transparent;background-clip:text"
+           data-target="6" data-suffix="+">0+</div>
+      <div style="margin-top:6px;font-size:12px;color:var(--t3);margin-bottom:14px">National Competitions</div>
+      <div style="display:flex;flex-direction:column;gap:5px">
+        <div style="display:flex;align-items:center;gap:8px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--t2)">
+          <span style="color:var(--amber)">▲</span> Innothan CTF — Top 3</div>
+        <div style="display:flex;align-items:center;gap:8px;font-size:11px;font-family:'JetBrains Mono',monospace;color:var(--t2)">
+          <span style="color:var(--cyan)">▲</span> CYBERTRON — Top 10</div>
+      </div>
+    </div>
+
+    <div class="glass bento-card reveal js-tilt" data-delay="240"
+         data-tilt data-tilt-max="8" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.06">
+      <div class="card-glow" style="background:#818cf8"></div>
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <div class="ibox" style="background:rgba(129,140,248,.08);border-color:rgba(129,140,248,.18)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#818cf8" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <span class="mono" style="font-size:11px;color:var(--t2)">Certification</span>
+      </div>
+      <div style="font-family:'JetBrains Mono',monospace;font-size:2.4rem;font-weight:800;line-height:1;color:var(--indigo);margin-bottom:4px">SY0-701</div>
+      <div style="font-size:12px;color:var(--t3);margin-bottom:16px">CompTIA Security+</div>
+      <div style="background:rgba(129,140,248,.05);border:1px solid rgba(129,140,248,.14);border-radius:9px;padding:12px">
+        <div style="font-size:9.5px;color:var(--indigo);font-family:'JetBrains Mono',monospace;letter-spacing:.08em;margin-bottom:5px">● IN PROGRESS · MAY. 2026</div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="gl reveal"></div>
+
+<section id="skills">
+  <div class="reveal" style="margin-bottom:22px"><span class="slabel">// Technical Arsenal</span></div>
+
+  <div class="skills-grid reveal">
+
+    <div class="glass" style="border-radius:16px;padding:26px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <div class="ibox" style="background:rgba(34,211,238,.08);border-color:rgba(34,211,238,.18)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#22d3ee" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        </div>
+        <div>
+          <div style="font-size:13.5px;font-weight:700">Defensive &amp; Infrastructure</div>
+          <div style="font-size:10.5px;color:var(--t3);font-family:'JetBrains Mono',monospace">detect · respond · analyse</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px">
+        <span class="skill-pill"><span class="sdot" style="background:var(--cyan)"></span>Wireshark</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--cyan)"></span>Incident Response</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--cyan)"></span>Log Analysis</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--cyan)"></span>IDS / IPS Concepts</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--em)"></span>MITRE ATT&amp;CK</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--em)"></span>NIST CSF</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--cyan)"></span>CVE / CVSS</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--cyan)"></span>Threat Analysis</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--cyan)"></span>SOC Monitoring</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--cyan)"></span>Packet Analysis</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--indigo)"></span>Python Automation</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--indigo)"></span>Bash Scripting</span>
+      </div>
+      <div style="padding-top:14px;border-top:1px solid var(--b1)">
+        <div style="font-size:10px;color:var(--t3);font-family:'JetBrains Mono',monospace;margin-bottom:8px;letter-spacing:.1em">FRAMEWORKS</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <span class="badge bc">MITRE ATT&amp;CK</span>
+          <span class="badge be">OWASP</span>
+          <span class="badge bi">NIST CSF</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="glass" style="border-radius:16px;padding:26px">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:18px">
+        <div class="ibox" style="background:rgba(248,113,113,.08);border-color:rgba(248,113,113,.18)">
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#f87171" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        </div>
+        <div>
+          <div style="font-size:13.5px;font-weight:700">Offensive &amp; Testing</div>
+          <div style="font-size:10.5px;color:var(--t3);font-family:'JetBrains Mono',monospace">attack · exploit · enumerate</div>
+        </div>
+      </div>
+      <div style="display:flex;flex-wrap:wrap;gap:7px;margin-bottom:18px">
+        <span class="skill-pill"><span class="sdot" style="background:var(--red)"></span>Burp Suite</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--red)"></span>Nmap</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--red)"></span>Gobuster</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--red)"></span>ffuf</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--red)"></span>Netcat</span>
+        <span class="skill-pill"><span class="sdot" style="background:#fb923c"></span>OWASP Top 10</span>
+        <span class="skill-pill"><span class="sdot" style="background:#fb923c"></span>SQLi · XSS · IDOR</span>
+        <span class="skill-pill"><span class="sdot" style="background:var(--t3)"></span>Kali Linux</span>
+      </div>
+      <div style="padding-top:14px;border-top:1px solid var(--b1)">
+        <div style="font-size:10px;color:var(--t3);font-family:'JetBrains Mono',monospace;margin-bottom:8px;letter-spacing:.1em">PLATFORMS</div>
+        <div style="display:flex;gap:6px;flex-wrap:wrap">
+          <span class="badge br">TryHackMe</span>
+          <span class="badge br" style="border-color:rgba(163,230,53,.3);background:rgba(163,230,53,.1);color:#a3e635">HackTheBox</span>
+          <span class="badge br">PortSwigger</span>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<div class="gl reveal"></div>
+
+<section id="project">
+  <div class="reveal" style="margin-bottom:22px"><span class="slabel">// Featured Architecture</span></div>
+
+  <div class="glass proj-wrap reveal js-tilt"
+       data-tilt data-tilt-max="3" data-tilt-speed="600" data-tilt-glare data-tilt-max-glare="0.04"
+       style="margin-bottom: 24px;">
+    <div class="proj-accent" style="background:linear-gradient(90deg,var(--em),var(--cyan) 60%,transparent)"></div>
+    <div class="proj-body">
+      <div class="proj-inner">
+
+        <div style="min-width:0">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+            <span class="badge be">SIEM</span>
+            <span class="badge bc">Log Analysis</span>
+            <span class="badge bi">Incident Response</span>
+          </div>
+
+          <h2 style="font-size:1.55rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:10px">
+            Threat Detection &amp;<br/>SIEM Home Lab
+          </h2>
+
+          <p style="font-size:13.5px;color:var(--t2);line-height:1.76;max-width:480px;margin-bottom:6px">
+            Configured a localized security lab utilizing Wazuh and the Elastic Stack to ingest, parse, and analyze endpoint logs. Authored custom detection rules mapping lateral movement indicators to the MITRE ATT&amp;CK framework.
+          </p>
+
+          <div class="proj-modules" style="margin:22px 0 0">
+            <div class="pmod" style="border-color:rgba(52,211,153,.14);background:rgba(52,211,153,.03)">
+              <div class="pmod-num" style="color:var(--em)">FOCUS 01</div>
+              <div class="pmod-title">Log Correlation</div>
+              <div class="pmod-desc">Aggregated Windows Event Logs and Sysmon data to track lateral movement.</div>
+            </div>
+            <div class="pmod" style="border-color:rgba(34,211,238,.14);background:rgba(34,211,238,.03)">
+              <div class="pmod-num" style="color:var(--cyan)">FOCUS 02</div>
+              <div class="pmod-title">Alert Triage</div>
+              <div class="pmod-desc">Investigated simulated phishing payloads and mapped indicators of compromise (IoCs).</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="arch">
+          <div style="font-size:9.5px;color:var(--t4);font-family:'JetBrains Mono',monospace;letter-spacing:.1em;margin-bottom:4px">DETECTION PIPELINE</div>
+          <div class="arch-node" style="border-color:rgba(248,113,113,.2);background:rgba(248,113,113,.05);color:var(--red)">Simulated Attack</div>
+          <div class="arch-arr">↓</div>
+          <div class="arch-node" style="border-color:rgba(52,211,153,.2);background:rgba(52,211,153,.05);color:var(--em)">Wazuh Agent</div>
+          <div class="arch-arr">↓</div>
+          <div class="arch-node" style="border-color:rgba(34,211,238,.2);background:rgba(34,211,238,.05);color:var(--cyan)">Elastic SIEM</div>
+          <div class="arch-arr">↓</div>
+          <div class="arch-node" style="border-color:rgba(129,140,248,.2);background:rgba(129,140,248,.05);color:var(--indigo)">Triage &amp; Respond</div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <div class="glass proj-wrap reveal js-tilt"
+       data-tilt data-tilt-max="3" data-tilt-speed="600" data-tilt-glare data-tilt-max-glare="0.04">
+    <div class="proj-accent"></div>
+    <div class="proj-body">
+      <div class="proj-inner">
+
+        <div style="min-width:0">
+          <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:14px">
+            <span class="badge bc">Python</span>
+            <span class="badge be">FastAPI</span>
+            <span class="badge bi">Vercel · Live</span>
+            <span class="badge ba">Open Source</span>
+          </div>
+
+          <h2 style="font-size:1.55rem;font-weight:800;letter-spacing:-.02em;line-height:1.2;margin-bottom:10px">
+            Web-Based Active<br/>Reconnaissance Tool
+          </h2>
+
+          <p style="font-size:13.5px;color:var(--t2);line-height:1.76;max-width:480px;margin-bottom:6px">
+            A production-grade recon engine automating the initial information-gathering phase of penetration testing — cutting manual enumeration overhead to near zero via a single URL input.
+          </p>
+
+          <div class="proj-modules">
+            <div class="pmod" style="border-color:rgba(34,211,238,.14);background:rgba(34,211,238,.03)">
+              <div class="pmod-num" style="color:var(--cyan)">MODULE 01</div>
+              <div class="pmod-title">Tech Fingerprinting</div>
+              <div class="pmod-desc">Detects frameworks, CMS, CDN, and server stack via header and response analysis.</div>
+            </div>
+            <div class="pmod" style="border-color:rgba(251,191,36,.14);background:rgba(251,191,36,.03)">
+              <div class="pmod-num" style="color:var(--amber)">MODULE 02</div>
+              <div class="pmod-title">Port Availability</div>
+              <div class="pmod-desc">Scans common ports and fingerprints services for attack-surface mapping.</div>
+            </div>
+          </div>
+
+          <div style="display:flex;flex-wrap:wrap;gap:10px">
+            <a href="https://github.com/md-yasin786/web-ui_recon" target="_blank" class="btn btn-p">
+              <svg width="14" height="14" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+              View Repository
+            </a>
+            <a href="https://web-ui-recon-active.vercel.app" target="_blank" class="btn btn-g">
+              <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6"/><polyline points="15 3 21 3 21 9"/><line x1="10" y1="14" x2="21" y2="3"/></svg>
+              Live Demo
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gl reveal"></div>
+
+<section id="ctf">
+  <div class="reveal" style="margin-bottom:22px"><span class="slabel">// CTF Competition Record</span></div>
+
+  <div class="podium-grid reveal">
+    <div class="glass bento-card js-tilt" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.08" style="border-color:rgba(251,191,36,.2);background:rgba(251,191,36,.04)">
+      <div class="card-glow" style="background:#fbbf24;opacity:.12"></div>
+      <span class="podium-medal">🥇</span>
+      <div class="podium-rank" style="color:var(--amber)">T3</div>
+      <div class="podium-name">Innothan CTF</div>
+      <div class="podium-scope">Inter-College</div>
+      <div style="margin-top:12px"><span class="badge ba" style="font-size:9.5px">Top 3 Placement</span></div>
+    </div>
+
+    <div class="glass bento-card js-tilt" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.08" style="border-color:rgba(52,211,153,.2);background:rgba(52,211,153,.04)">
+      <div class="card-glow" style="background:#34d399;opacity:.12"></div>
+      <span class="podium-medal">🥈</span>
+      <div class="podium-rank" style="color:var(--em)">T6</div>
+      <div class="podium-name">ROOTW4R CTF</div>
+      <div class="podium-scope">Inter-College</div>
+      <div style="margin-top:12px"><span class="badge be" style="font-size:9.5px">Top 6 Placement</span></div>
+    </div>
+
+    <div class="glass bento-card js-tilt" data-tilt data-tilt-max="10" data-tilt-speed="400" data-tilt-glare data-tilt-max-glare="0.08" style="border-color:rgba(34,211,238,.2);background:rgba(34,211,238,.04)">
+      <div class="card-glow" style="background:#22d3ee;opacity:.12"></div>
+      <span class="podium-medal">🏆</span>
+      <div class="podium-rank" style="color:var(--cyan)">T10</div>
+      <div class="podium-name">CYBERTRON CTF</div>
+      <div class="podium-scope">National</div>
+      <div style="margin-top:12px"><span class="badge bc" style="font-size:9.5px">Top 10 National</span></div>
+    </div>
+  </div>
+
+  <div class="glass reveal" style="border-radius:16px;padding:10px 24px;margin-top:14px">
+    <div class="ctf-list">
+      <div class="ctf-row">
+        <span class="ctf-idx">#01</span>
+        <div class="ctf-name-col">
+          <div class="ctf-name">Innothan CTF</div>
+          <div class="ctf-scope">Inter-College · 2024</div>
+        </div>
+        <span class="badge ba" style="font-size:10px">Inter-College</span>
+        <span class="ctf-place" style="color:var(--amber)">Top 3</span>
+      </div>
+      <div class="ctf-row">
+        <span class="ctf-idx">#02</span>
+        <div class="ctf-name-col">
+          <div class="ctf-name">ROOTW4R CTF</div>
+          <div class="ctf-scope">Inter-College · 2024</div>
+        </div>
+        <span class="badge be" style="font-size:10px">Inter-College</span>
+        <span class="ctf-place" style="color:var(--em)">Top 6</span>
+      </div>
+      <div class="ctf-row">
+        <span class="ctf-idx">#03</span>
+        <div class="ctf-name-col">
+          <div class="ctf-name">CYBERTRON CTF</div>
+          <div class="ctf-scope">National · 2024</div>
+        </div>
+        <span class="badge bc" style="font-size:10px">National</span>
+        <span class="ctf-place" style="color:var(--cyan)">Top 10</span>
+      </div>
+      <div class="ctf-row">
+        <span class="ctf-idx">#04</span>
+        <div class="ctf-name-col">
+          <div class="ctf-name">Chaitanya CTF</div>
+          <div class="ctf-scope">National · 2024</div>
+        </div>
+        <span class="badge bc" style="font-size:10px">National</span>
+        <span class="ctf-place" style="color:var(--cyan)">Top 10</span>
+      </div>
+      <div class="ctf-row">
+        <span class="ctf-idx">#05</span>
+        <div class="ctf-name-col">
+          <div class="ctf-name">YUKTHI 2.0 CTF</div>
+          <div class="ctf-scope">National · 2024</div>
+        </div>
+        <span class="badge bc" style="font-size:10px">National</span>
+        <span class="ctf-place" style="color:var(--t2)">Top 20</span>
+      </div>
+      <div class="ctf-row">
+        <span class="ctf-idx">#06</span>
+        <div class="ctf-name-col">
+          <div class="ctf-name">HackQuest 2K25 &amp; 2K26</div>
+          <div class="ctf-scope">Web Exploitation · 2025–26</div>
+        </div>
+        <span class="badge be" style="font-size:10px">Web Exploitation</span>
+        <span class="ctf-place" style="color:var(--t2)">Top 20</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<div class="gl reveal"></div>
+
+<section id="writeups">
+  <div class="reveal" style="margin-bottom:22px"><span class="slabel">// Security Writeups & Analysis</span></div>
+  <div class="skills-grid reveal">
+    
+    <div class="glass" style="border-radius:16px;padding:26px">
+      <div class="pmod-num" style="color:var(--cyan);margin-bottom:10px">DFIR · FORENSICS</div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px">Memory Forensics: Evaporated Challenge</div>
+      <div style="font-size:13px;color:var(--t2);margin-bottom:18px;line-height:1.6">A detailed walkthrough using Volatility 3 to extract malicious artifacts from a compromised Windows memory dump, demonstrating structured incident response thinking.</div>
+      <a href="YOUR_MEDIUM_LINK_HERE" target="_blank" class="btn btn-g" style="padding:8px 14px;font-size:11px">Read Writeup →</a>
+    </div>
+
+    <div class="glass" style="border-radius:16px;padding:26px">
+      <div class="pmod-num" style="color:var(--em);margin-bottom:10px">OFFENSIVE · HTB</div>
+      <div style="font-size:15px;font-weight:700;margin-bottom:8px">HackTheBox: Pirate Killchain</div>
+      <div style="font-size:13px;color:var(--t2);margin-bottom:18px;line-height:1.6">Complete attack narrative covering initial foothold via SSRF, Linux privilege escalation, and lateral movement, mapped to the MITRE ATT&CK framework.</div>
+      <a href="YOUR_MEDIUM_LINK_HERE" target="_blank" class="btn btn-g" style="padding:8px 14px;font-size:11px">Read Writeup →</a>
+    </div>
+
+  </div>
+</section>
+
+<div class="gl reveal"></div>
+
+<section id="edu">
+  <div class="reveal" style="margin-bottom:22px"><span class="slabel">// Education</span></div>
+  <div class="glass edu-card reveal">
+    <div>
+      <div style="margin-bottom:12px">
+        <span class="badge be">B.Sc IT · Cybersecurity Specialisation</span>
+      </div>
+      <h3 style="font-size:17px;font-weight:800;margin-bottom:5px">Jamal Mohamed College, Tiruchirappalli</h3>
+      <div style="font-size:13px;color:var(--t2)">Bharathidasan University &nbsp;·&nbsp; Graduated April 2026</div>
+      <div style="margin-top:14px;display:flex;flex-wrap:wrap;gap:7px">
+        <span class="badge bc">Penetration Testing</span>
+        <span class="badge bi">Network Security</span>
+        <span class="badge be">Cyber Forensics</span>
+        <span class="badge br">Ethical Hacking</span>
+      </div>
+    </div>
+    <div style="text-align:right">
+      <div style="font-size:10px;color:var(--t3);font-family:'JetBrains Mono',monospace;letter-spacing:.1em;margin-bottom:6px">CGPA</div>
+      <div class="edu-cgpa gc">7.8<span style="font-size:1.1rem;color:var(--t3)">/10</span></div>
+    </div>
+  </div>
+</section>
+
+<section id="contact" class="reveal">
+  <div style="height:1px;background:linear-gradient(90deg,transparent,rgba(34,211,238,.25),transparent);margin-bottom:56px"></div>
+  <div style="font-size:10.5px;color:var(--t3);font-family:'JetBrains Mono',monospace;letter-spacing:.16em;margin-bottom:14px">// LET'S CONNECT</div>
+  <h2 style="font-size:clamp(1.8rem,4vw,3rem);font-weight:900;letter-spacing:-.03em;margin-bottom:10px">
+    Open to <span class="gc">Opportunities</span>
+  </h2>
+  <p style="font-size:14px;color:var(--t2);max-width:440px;margin:0 auto 6px">
+    Actively seeking entry-level roles in cybersecurity — SOC Analyst, Security Engineer, Threat Analyst.
+  </p>
+  <p style="font-size:13px;color:var(--t3);font-family:'JetBrains Mono',monospace;margin-bottom:0">
+    Available for immediate joining.
+  </p>
+  <div class="contact-links">
+    <a href="mailto:mohamed.yasin.sec@gmail.com" class="btn btn-p">
+      <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,12 2,6"/></svg>
+      mohamed.yasin.sec@gmail.com
+    </a>
+    <a href="https://www.linkedin.com/in/mohamedyasin-k" target="_blank" class="btn btn-g" aria-label="LinkedIn Profile">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/md-yasin786" target="_blank" class="btn btn-g" aria-label="GitHub Profile">
+      <svg width="13" height="13" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482A10.019 10.019 0 0022 12.017C22 6.484 17.522 2 12 2z"/></svg>
+      GitHub
+    </a>
+  </div>
+  <p class="foot">© <span id="year"></span> Mohamed Yasin K · Tiruchirappalli, India.</p>
+</section>
+
+</div><script>
+/* ══════════════════════════════════════════
+   1. TYPEWRITER — fast, clean, professional
+══════════════════════════════════════════ */
+(function(){
+  const roles = ['SOC Analyst', 'Security Analyst', 'Cybersecurity Analyst', 'Threat Hunter'];
+  const el = document.getElementById('tw');
+  let ri = 0, ci = 0, deleting = false;
+  const SPEED_TYPE = 68, SPEED_DEL = 36, PAUSE_END = 1600, PAUSE_START = 320;
+  function tick(){
+    const word = roles[ri];
+    if(!deleting){
+      el.textContent = word.slice(0, ++ci);
+      if(ci === word.length){ deleting = true; setTimeout(tick, PAUSE_END); return; }
+    } else {
+      el.textContent = word.slice(0, --ci);
+      if(ci === 0){ deleting = false; ri = (ri+1) % roles.length; setTimeout(tick, PAUSE_START); return; }
+    }
+    setTimeout(tick, deleting ? SPEED_DEL : SPEED_TYPE);
+  }
+  tick();
+})();
+
+/* ══════════════════════════════════════════
+   2. SCROLL REVEAL — staggered, buttery
+══════════════════════════════════════════ */
+(function(){
+  const els = document.querySelectorAll('.reveal');
+  const io = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if(!e.isIntersecting) return;
+      const delay = parseInt(e.target.dataset.delay || 0);
+      setTimeout(() => e.target.classList.add('visible'), delay);
+      io.unobserve(e.target);
+    });
+  }, {threshold: 0.1});
+  els.forEach(el => io.observe(el));
+})();
+
+/* ══════════════════════════════════════════
+   3. COUNTING STATS — animate up
+══════════════════════════════════════════ */
+(function(){
+  const counters = document.querySelectorAll('.js-counter');
+  const bars = document.querySelectorAll('.js-prog');
+
+  function easeOut(t){ return 1 - Math.pow(1-t, 3) }
+
+  function animateCounter(el){
+    // Bug Fix: Hide text until JS kicks in
+    if(el.textContent === "0+") el.textContent = ""; 
+    
+    const target = parseInt(el.dataset.target);
+    const suffix = el.dataset.suffix || '';
+    const prefix = el.dataset.prefix || '';
+    const dur = 1400, start = performance.now();
+    function step(now){
+      const t = Math.min((now-start)/dur, 1);
+      el.textContent = prefix + Math.round(easeOut(t) * target) + suffix;
+      if(t < 1) requestAnimationFrame(step);
+    }
+    requestAnimationFrame(step);
+  }
+
+  function animateBar(el){
+    const w = parseInt(el.dataset.width);
+    requestAnimationFrame(() => { el.style.width = w + '%'; });
+  }
+
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if(!e.isIntersecting) return;
+      if(e.target.classList.contains('js-counter')) animateCounter(e.target);
+      if(e.target.classList.contains('js-prog')) animateBar(e.target);
+      io.unobserve(e.target);
+    });
+  }, {threshold: 0.4});
+
+  counters.forEach(el => io.observe(el));
+  bars.forEach(el => io.observe(el));
+})();
+
+/* ══════════════════════════════════════════
+   4. INTERACTIVE TERMINAL
+══════════════════════════════════════════ */
+(function(){
+  const out = document.getElementById('toutput');
+  const inp = document.getElementById('tinput');
+  if(!out || !inp) return;
+
+  const DB = {
+    help: [
+      ['d','Available commands:'],
+      ['c','  whoami    '],['e','  → identity & background'],
+      ['c','  skills    '],['e','  → tool belt breakdown'],
+      ['c','  ctf       '],['e','  → competition record'],
+      ['c','  cert      '],['e','  → certifications'],
+      ['c','  contact   '],['e','  → get in touch'],
+      ['c','  clear     '],['e','  → clear terminal'],
+    ],
+    whoami: [
+      ['e','Mohamed Yasin K'],
+      ['d','─────────────────────────────'],
+      ['', 'Role     : Cybersecurity Practitioner'],
+      ['', 'College  : Jamal Mohamed College, Tiruchirappalli'],
+      ['', 'Degree   : B.Sc IT · Cybersecurity Specialisation'],
+      ['', 'CGPA     : 7.8 / 10  |  Graduated: April 2026'],
+      ['', 'THM Rank : Top 3% globally'],
+      ['a', 'Status   : Open to entry-level cybersecurity roles'],
+    ],
+    skills: [
+      ['c','[ DEFENSIVE ]'],
+      ['', 'Wireshark  Incident Response  Log Analysis'],
+      ['', 'IDS/IPS  MITRE ATT&CK  NIST CSF  CVE/CVSS'],
+      ['', 'SOC Monitoring  Packet Analysis  Threat Analysis'],
+      ['d',''],
+      ['a','[ OFFENSIVE ]'],
+      ['', 'Burp Suite  Nmap  Gobuster  ffuf  Netcat'],
+      ['', 'OWASP Top 10  SQLi  XSS  IDOR  Kali Linux'],
+      ['d',''],
+      ['e','[ LANGUAGES ]'],
+      ['', 'Python (security automation)  Bash Scripting'],
+    ],
+    ctf: [
+      ['a','CTF Competition Record'],
+      ['d','─────────────────────────────'],
+      ['a','🥇 #1  Innothan CTF        → Top 3   (Inter-College)'],
+      ['e','🥈 #2  ROOTW4R CTF         → Top 6   (Inter-College)'],
+      ['c','🏆 #3  CYBERTRON CTF       → Top 10  (National)'],
+      ['', '   #4  Chaitanya CTF       → Top 10  (National)'],
+      ['', '   #5  YUKTHI 2.0 CTF      → Top 20  (National)'],
+      ['', '   #6  HackQuest 2K25/2K26 → Top 20  (Web Exploitation)'],
+    ],
+    cert: [
+      ['c','Certifications & Training'],
+      ['d','─────────────────────────────'],
+      ['a','[ IN PROGRESS ]'],
+      ['', 'CompTIA Security+ (SY0-701) · Expected 2026'],
+      ['d',''],
+      ['e','[ COMPLETED ]'],
+      ['', 'TryHackMe Jr Penetration Tester Path'],
+      ['', 'TryHackMe SOC Level 1 Path'],
+      ['', 'Cisco Networking Academy · Intro to Networking'],
+      ['', 'Cisco Networking Academy · Ethical Hacking'],
+      ['d',''],
+      ['c','THM: Top 3% global  |  100+ rooms completed'],
+    ],
+    contact: [
+      ['e','Get In Touch'],
+      ['d','─────────────────────────────'],
+      ['c','Email    : mohamed.yasin.sec@gmail.com'],
+      ['c','LinkedIn : linkedin.com/in/mohamedyasin-k'],
+      ['c','GitHub   : github.com/md-yasin786'],
+      ['d',''],
+      ['a','Open to: SOC Analyst · Security Engineer · Threat Analyst'],
+    ],
+  };
+
+  let history = [], hIdx = -1;
+
+  function print(cmd){
+    const cmdLine = document.createElement('div');
+    cmdLine.className = 'tline';
+    cmdLine.innerHTML = `<span class="tp">yasin@kali:~$</span> <span class="tcmd">${escHtml(cmd)}</span>`;
+    out.appendChild(cmdLine);
+  }
+
+  function output(lines){
+    lines.forEach(([cls, text]) => {
+      const d = document.createElement('span');
+      d.className = 'tout' + (cls ? ' '+cls : '');
+      d.textContent = text;
+      out.appendChild(d);
+    });
+  }
+
+  function escHtml(s){ return s.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;') }
+
+  // Boot message
+  output([
+    ['d','╔─────────────────────────────────╗'],
+    ['d','  yasin@kali — security terminal   '],
+    ['d','╚─────────────────────────────────╝'],
+    ['e','Welcome. Type \'help\' to begin.'],
+    ['d',''],
+  ]);
+
+  function run(cmd){
+    cmd = cmd.trim().toLowerCase();
+    if(!cmd) return;
+    history.unshift(cmd); hIdx = -1;
+    print(cmd);
+    if(cmd === 'clear'){ out.innerHTML = ''; return; }
+    const lines = DB[cmd];
+    if(lines){ output(lines); }
+    else { output([['r', `command not found: ${cmd}`],['d','type \'help\' for available commands']]); }
+    output([['d','']]);
+    out.scrollTop = out.scrollHeight;
+  }
+
+  inp.addEventListener('keydown', e => {
+    if(e.key === 'Enter'){ run(inp.value); inp.value = ''; }
+    if(e.key === 'ArrowUp'){ e.preventDefault(); if(hIdx < history.length-1){ hIdx++; inp.value = history[hIdx]; } }
+    if(e.key === 'ArrowDown'){ e.preventDefault(); if(hIdx > 0){ hIdx--; inp.value = history[hIdx]; } else { hIdx=-1; inp.value=''; } }
+  });
+
+  // Click anywhere in terminal focuses input
+  document.querySelector('.term-wrap').addEventListener('click', () => inp.focus());
+})();
+
+/* ══════════════════════════════════════════
+   5. DYNAMIC FOOTER YEAR
+══════════════════════════════════════════ */
+(function(){
+  const yearSpan = document.getElementById('year');
+  if(yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+})();
+</script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "Person",
+  "name": "Mohamed Yasin K",
+  "jobTitle": "SOC Analyst",
+  "url": "https://your-hosted-domain.com",
+  "email": "mohamed.yasin.sec@gmail.com",
+  "sameAs": [
+    "https://www.linkedin.com/in/mohamedyasin-k",
+    "https://github.com/md-yasin786"
+  ]
+}
+</script>
+
+</body>
+</html>
